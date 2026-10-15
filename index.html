@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FocusFlow — Student Productivity</title>
+    <meta
+      name="description"
+      content="A simple student productivity dashboard with tasks, progress tracking, and a Pomodoro timer."
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <div>
+          <h1>FocusFlow</h1>
+          <p class="tagline">Stay organized. Study with intention.</p>
+        </div>
+      </div>
+      <button
+        type="button"
+        id="theme-toggle"
+        class="icon-button"
+        aria-label="Switch to dark mode"
+      >
+        <span id="theme-toggle-label">Dark</span>
+      </button>
+    </header>
+
+    <main id="main" class="layout">
+      <section class="column" aria-labelledby="dashboard-heading">
+        <h2 id="dashboard-heading" class="visually-hidden">Dashboard</h2>
+
+        <div class="stats-grid" aria-live="polite">
+          <article class="card stat-card">
+            <p class="stat-label">Total</p>
+            <p class="stat-value" id="stat-total">0</p>
+          </article>
+          <article class="card stat-card">
+            <p class="stat-label">Completed</p>
+            <p class="stat-value" id="stat-completed">0</p>
+          </article>
+          <article class="card stat-card">
+            <p class="stat-label">Pending</p>
+            <p class="stat-value" id="stat-pending">0</p>
+          </article>
+        </div>
+
+        <div class="card progress-card">
+          <div class="progress-header">
+            <h3>Completion</h3>
+            <p id="progress-label">0%</p>
+          </div>
+          <div
+            class="progress-track"
+            role="progressbar"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="0"
+            aria-labelledby="progress-label"
+            id="progress-bar"
+          >
+            <div class="progress-fill" id="progress-fill"></div>
+          </div>
+        </div>
+
+        <form id="task-form" class="card form-card" novalidate>
+          <h2>Add a task</h2>
+          <div class="field">
+            <label for="task-title">Title</label>
+            <input
+              id="task-title"
+              name="title"
+              type="text"
+              maxlength="120"
+              autocomplete="off"
+              placeholder="Read chapter 4 notes"
+            />
+            <p id="title-error" class="error-message" role="alert" hidden>
+              Please enter a task title.
+            </p>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="task-category">Category</label>
+              <select id="task-category" name="category">
+                <option value="Study">Study</option>
+                <option value="Assignments">Assignments</option>
+                <option value="Work">Work</option>
+                <option value="Personal">Personal</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="task-priority">Priority</label>
+              <select id="task-priority" name="priority">
+                <option value="high">High</option>
+                <option value="medium" selected>Medium</option>
+                <option value="low">Low</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="primary-button">Add task</button>
+        </form>
+
+        <section class="card list-card" aria-labelledby="tasks-heading">
+          <div class="list-header">
+            <h2 id="tasks-heading">Tasks</h2>
+            <div class="filters" role="group" aria-label="Filter tasks">
+              <button type="button" class="filter-button is-active" data-filter="all" aria-pressed="true">
+                All
+              </button>
+              <button type="button" class="filter-button" data-filter="pending" aria-pressed="false">
+                Pending
+              </button>
+              <button type="button" class="filter-button" data-filter="completed" aria-pressed="false">
+                Completed
+              </button>
+            </div>
+          </div>
+          <ul id="task-list" class="task-list"></ul>
+        </section>
+      </section>
+
+      <aside class="column timer-column" aria-labelledby="timer-heading">
+        <section class="card timer-card">
+          <h2 id="timer-heading">Pomodoro</h2>
+          <p class="timer-subtitle">25-minute focus session</p>
+          <p id="timer-display" class="timer-display" aria-live="off">25:00</p>
+          <div class="timer-controls">
+            <button type="button" id="timer-start" class="primary-button">Start</button>
+            <button type="button" id="timer-pause" class="secondary-button">Pause</button>
+            <button type="button" id="timer-reset" class="secondary-button">Reset</button>
+          </div>
+          <p id="timer-message" class="timer-message" role="status" aria-live="polite"></p>
+        </section>
+      </aside>
+    </main>
+
+    <footer class="site-footer">
+      <p>FocusFlow keeps your tasks and theme on this device. No account required.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
