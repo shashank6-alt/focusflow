@@ -171,7 +171,7 @@ function renderTasks() {
       const completeLabel = task.completed ? "Mark as pending" : "Mark as completed";
 
       return `
-        <li class="task-item${completeClass}" data-id="${task.id}">
+        <li class="task-item priority-${task.priority}${completeClass}" data-id="${task.id}">
           <input
             type="checkbox"
             class="task-toggle"

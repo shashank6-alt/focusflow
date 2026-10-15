@@ -37,22 +37,37 @@
 
         <div class="stats-grid" aria-live="polite">
           <article class="card stat-card">
-            <p class="stat-label">Total</p>
+            <div class="stat-heading">
+              <p class="stat-label">Total tasks</p>
+              <span class="stat-icon" aria-hidden="true">◎</span>
+            </div>
             <p class="stat-value" id="stat-total">0</p>
+            <p class="stat-caption">Across your workspace</p>
           </article>
           <article class="card stat-card">
-            <p class="stat-label">Completed</p>
+            <div class="stat-heading">
+              <p class="stat-label">Completed</p>
+              <span class="stat-icon" aria-hidden="true">✓</span>
+            </div>
             <p class="stat-value" id="stat-completed">0</p>
+            <p class="stat-caption">Tasks checked off</p>
           </article>
           <article class="card stat-card">
-            <p class="stat-label">Pending</p>
+            <div class="stat-heading">
+              <p class="stat-label">Pending</p>
+              <span class="stat-icon" aria-hidden="true">◷</span>
+            </div>
             <p class="stat-value" id="stat-pending">0</p>
+            <p class="stat-caption">Ready for focus</p>
           </article>
         </div>
 
         <div class="card progress-card">
           <div class="progress-header">
-            <h3>Completion</h3>
+            <div>
+              <p class="eyebrow">Your momentum</p>
+              <h3>Completion progress</h3>
+            </div>
             <p id="progress-label">0%</p>
           </div>
           <div
@@ -130,9 +145,17 @@
 
       <aside class="column timer-column" aria-labelledby="timer-heading">
         <section class="card timer-card">
-          <h2 id="timer-heading">Pomodoro</h2>
-          <p class="timer-subtitle">25-minute focus session</p>
-          <p id="timer-display" class="timer-display" aria-live="off">25:00</p>
+          <div class="timer-heading">
+            <div>
+              <p class="eyebrow">Deep work</p>
+              <h2 id="timer-heading">Pomodoro</h2>
+            </div>
+            <span class="timer-status">Focus mode</span>
+          </div>
+          <p class="timer-subtitle">A quiet 25-minute sprint for meaningful progress.</p>
+          <div class="timer-ring" aria-hidden="true">
+            <p id="timer-display" class="timer-display" aria-live="off">25:00</p>
+          </div>
           <div class="timer-controls">
             <button type="button" id="timer-start" class="primary-button">Start</button>
             <button type="button" id="timer-pause" class="secondary-button">Pause</button>
